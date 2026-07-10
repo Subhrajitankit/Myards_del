@@ -1,0 +1,7 @@
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/image/deliveryboy.png"
+  adaptive_icon_background: "#039D55"
+  adaptive_icon_foreground: "assets/image/deliveryboy.png"
+  remove_alpha_ios: true

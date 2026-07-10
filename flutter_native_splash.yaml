@@ -1,0 +1,10 @@
+flutter_native_splash:
+  color: "#039D55"
+  image: assets/image/deliveryboy.png
+  android: true
+  ios: true
+  web: false
+
+  android_12:
+    color: "#039D55"
+    image: assets/image/deliveryboy.png

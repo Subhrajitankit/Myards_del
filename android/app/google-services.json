@@ -1,0 +1,121 @@
+{
+  "project_info": {
+    "project_number": "328521548399",
+    "project_id": "myards-9876",
+    "storage_bucket": "myards-9876.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328521548399:android:ac1f4db3b126693731039a",
+        "android_client_info": {
+          "package_name": "com.myards.customer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328521548399-s457vb2v093jai97oj5lvr5pgldajdpk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.myards.customer",
+            "certificate_hash": "7a59d6b2555f92453e69d830be78525a7cbb5efa"
+          }
+        },
+        {
+          "client_id": "328521548399-eqm695d1sn1e832p755u1nnqd39bd0rh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACE9WGG7Jj8zfh2c8L9mqNtktAIBCEckM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328521548399-eqm695d1sn1e832p755u1nnqd39bd0rh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328521548399:android:103e2ac634f2be4e31039a",
+        "android_client_info": {
+          "package_name": "com.myards.deliveryman"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328521548399-6m6afef29isqlho2jkgkd2sdie4rptbv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.myards.deliveryman",
+            "certificate_hash": "4e0dab3056cc1e3da41468c76784de1165fb21ed"
+          }
+        },
+        {
+          "client_id": "328521548399-eqm695d1sn1e832p755u1nnqd39bd0rh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACE9WGG7Jj8zfh2c8L9mqNtktAIBCEckM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328521548399-eqm695d1sn1e832p755u1nnqd39bd0rh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328521548399:android:c6598b49bc73a03c31039a",
+        "android_client_info": {
+          "package_name": "com.myards.vendor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328521548399-u24dn5mq07auvgd86mtp9dg5p9bpnsg3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.myards.vendor",
+            "certificate_hash": "7a59d6b2555f92453e69d830be78525a7cbb5efa"
+          }
+        },
+        {
+          "client_id": "328521548399-eqm695d1sn1e832p755u1nnqd39bd0rh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACE9WGG7Jj8zfh2c8L9mqNtktAIBCEckM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328521548399-eqm695d1sn1e832p755u1nnqd39bd0rh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
