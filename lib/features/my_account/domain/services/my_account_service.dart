@@ -7,6 +7,8 @@ import 'package:sixam_mart_delivery/features/my_account/domain/models/wallet_pay
 import 'package:sixam_mart_delivery/features/my_account/domain/models/withdraw_request_model.dart';
 import 'package:sixam_mart_delivery/features/my_account/domain/repositories/my_account_repository_interface.dart';
 import 'package:sixam_mart_delivery/features/my_account/domain/services/my_account_service_interface.dart';
+import 'package:sixam_mart_delivery/features/ride_module/trip/domain/models/trip_model.dart';
+import 'package:sixam_mart_delivery/features/my_account/domain/models/delivery_income_statement_model.dart';
 
 class MyAccountService implements MyAccountServiceInterface {
   final MyAccountRepositoryInterface myAccountRepositoryInterface;
@@ -65,6 +67,16 @@ class MyAccountService implements MyAccountServiceInterface {
   @override
   Future<Response> convertPoint(String point, {required bool isRideActive}) async {
     return await myAccountRepositoryInterface.convertPoint(point, isRideActive: isRideActive);
+  }
+
+  @override
+  Future<TripModel?> getRideIncomeStatement(int offset) async {
+    return await myAccountRepositoryInterface.getRideIncomeStatement(offset: offset);
+  }
+
+  @override
+  Future<DeliveryIncomeStatementModel?> getDeliveryIncomeStatement(int offset) async {
+    return await myAccountRepositoryInterface.getDeliveryIncomeStatement(offset: offset);
   }
 
 }

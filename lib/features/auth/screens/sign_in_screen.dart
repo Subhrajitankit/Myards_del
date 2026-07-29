@@ -68,7 +68,7 @@ class _SignInScreenState extends State<SignInScreen> {
               builder: (authController) {
                 return Column(
                   children: [
-                    Image.asset(Images.logo, width: 200),
+                    Image.asset(Images.logo, width: 150, height: 150),
                     const SizedBox(height: 50),
 
                     Text(

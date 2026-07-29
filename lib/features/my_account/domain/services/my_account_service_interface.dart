@@ -5,6 +5,8 @@ import 'package:sixam_mart_delivery/features/my_account/domain/models/loyalty_re
 import 'package:sixam_mart_delivery/features/my_account/domain/models/referral_report_model.dart';
 import 'package:sixam_mart_delivery/features/my_account/domain/models/wallet_payment_model.dart';
 import 'package:sixam_mart_delivery/features/my_account/domain/models/withdraw_request_model.dart';
+import 'package:sixam_mart_delivery/features/ride_module/trip/domain/models/trip_model.dart';
+import 'package:sixam_mart_delivery/features/my_account/domain/models/delivery_income_statement_model.dart';
 
 abstract class MyAccountServiceInterface {
   Future<ResponseModel> makeCollectCashPayment(double amount, String paymentGatewayName);
@@ -18,4 +20,6 @@ abstract class MyAccountServiceInterface {
   Future<List<WithdrawRequestModel>?> getWithdrawRequestList();
   Future<Response?> getLoyaltyPointList({String? offset, String? dateRange, String? startDate, String? endDate, String? transactionType, bool? fromFilter});
   Future<Response> convertPoint(String point, {required bool isRideActive});
+  Future<TripModel?> getRideIncomeStatement(int offset);
+  Future<DeliveryIncomeStatementModel?> getDeliveryIncomeStatement(int offset);
 }

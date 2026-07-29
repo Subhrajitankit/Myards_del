@@ -9,10 +9,6 @@ import 'package:sixam_mart_delivery/helper/notification_helper.dart';
 import 'package:sixam_mart_delivery/helper/pusher_helper.dart';
 import 'package:sixam_mart_delivery/helper/route_helper.dart';
 import 'package:sixam_mart_delivery/util/app_constants.dart';
-import 'package:sixam_mart_delivery/util/dimensions.dart';
-import 'package:sixam_mart_delivery/util/images.dart';
-import 'package:sixam_mart_delivery/util/styles.dart';
-import 'package:sixam_mart_delivery/util/myards_theme_tokens.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -25,16 +21,11 @@ class SplashScreen extends StatefulWidget {
 }
 
 class SplashScreenState extends State<SplashScreen> {
-  final GlobalKey<ScaffoldState> _globalKey = GlobalKey();
   StreamSubscription<List<ConnectivityResult>>? _onConnectivityChanged;
 
-
-
   @override
-
   void initState() {
     super.initState();
-
 
     if (Get.find<AuthController>().isLoggedIn()) {
       Get.find<ProfileController>().getProfile();
@@ -57,7 +48,7 @@ class SplashScreenState extends State<SplashScreen> {
             backgroundColor: isConnected ? Colors.green : Colors.red,
             duration: Duration(seconds: isConnected ? 3 : 6000),
             content: Text(
-             isConnected ? 'connected'.tr : 'no_connection'.tr,
+              isConnected ? 'connected'.tr : 'no_connection'.tr,
               textAlign: TextAlign.center,
             ),
           ),
@@ -177,30 +168,34 @@ class SplashScreenState extends State<SplashScreen> {
     }
   }
 
+  /* @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Text(
+          'Myards Delivery Partner',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.red,
+            fontFamily: 'Fontastique',
+            fontSize: 30,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
+    );
+  }*/
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _globalKey,
-      backgroundColor: MyardsColors.primary,
+    return const Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(Dimensions.paddingSizeLarge),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Image.asset(Images.logo, width: 200, height: 200),
-              const SizedBox(height: MyardsSpacing.xl),
-              Text(
-                'Myards Delivery Partner',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
+        child: Image(
+          image: AssetImage('assets/image/final_launcher_logo.png'),
+          width: 200,
+          height: 200,
+          fit: BoxFit.contain,
         ),
       ),
     );

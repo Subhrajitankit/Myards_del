@@ -10,6 +10,8 @@ import 'package:sixam_mart_delivery/features/my_account/domain/models/withdraw_r
 import 'package:sixam_mart_delivery/features/my_account/domain/repositories/my_account_repository_interface.dart';
 import 'package:sixam_mart_delivery/helper/route_helper.dart';
 import 'package:sixam_mart_delivery/util/app_constants.dart';
+import 'package:sixam_mart_delivery/features/ride_module/trip/domain/models/trip_model.dart';
+import 'package:sixam_mart_delivery/features/my_account/domain/models/delivery_income_statement_model.dart';
 
 class MyAccountRepository implements MyAccountRepositoryInterface {
   final ApiClient apiClient;
@@ -167,6 +169,26 @@ class MyAccountRepository implements MyAccountRepositoryInterface {
   @override
   Future<Response> convertPoint(String point, {required bool isRideActive}) async {
     return await apiClient.getData('${isRideActive ? AppConstants.riderPointConvertUri : AppConstants.dmPointConvertUri}?points=$point&token=${_getUserToken()}');
+  }
+
+  @override
+  Future<TripModel?> getRideIncomeStatement({required int offset}) async {
+    TripModel? tripModel;
+    Response response = await apiClient.getData('${AppConstants.rideIncomeStatementListUri}$offset&token=${_getUserToken()}');
+    if (response.statusCode == 200) {
+      tripModel = TripModel.fromJson(response.body);
+    }
+    return tripModel;
+  }
+
+  @override
+  Future<DeliveryIncomeStatementModel?> getDeliveryIncomeStatement({required int offset}) async {
+    DeliveryIncomeStatementModel? deliveryIncomeStatementModel;
+    Response response = await apiClient.getData('${AppConstants.deliveryIncomeStatementListUri}$offset&token=${_getUserToken()}');
+    if (response.statusCode == 200) {
+      deliveryIncomeStatementModel = DeliveryIncomeStatementModel.fromJson(response.body);
+    }
+    return deliveryIncomeStatementModel;
   }
 
   @override

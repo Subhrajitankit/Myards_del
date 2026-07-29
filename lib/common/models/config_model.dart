@@ -22,6 +22,7 @@ class ConfigModel {
   double? freeDeliveryOver;
   bool? demo;
   bool? maintenanceMode;
+  MaintenanceModeData? maintenanceModeData;
   String? orderConfirmationModel;
   bool? showDmEarning;
   bool? showRiderEarning;
@@ -171,6 +172,7 @@ class ConfigModel {
     freeDeliveryOver = json['free_delivery_over'] != null ? json['free_delivery_over']?.toDouble() : 0.0;
     demo = json['demo'];
     maintenanceMode = json['maintenance_mode'];
+    maintenanceModeData = json['maintenance_mode_data'] != null ? MaintenanceModeData.fromJson(json['maintenance_mode_data']) : null;
     orderConfirmationModel = json['order_confirmation_model'];
     showDmEarning = json['show_dm_earning'];
     canceledByDeliveryman = json['canceled_by_deliveryman'];
@@ -592,6 +594,22 @@ class ReferralData {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['referal_status'] = referalStatus;
     data['referal_amount'] = referalAmount;
+    return data;
+  }
+}
+
+class MaintenanceModeData {
+  List<String>? maintenanceSystemSetup;
+
+  MaintenanceModeData({this.maintenanceSystemSetup});
+
+  MaintenanceModeData.fromJson(Map<String, dynamic> json) {
+    maintenanceSystemSetup = json['maintenance_system_setup'] != null ? json['maintenance_system_setup'].cast<String>() : [];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['maintenance_system_setup'] = maintenanceSystemSetup;
     return data;
   }
 }

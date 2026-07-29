@@ -2,6 +2,6 @@
 
 <resources>
     <color name="background_color">#FFFFFF</color>
-	<color name="ic_launcher_background">#039D55</color>
+	<color name="ic_launcher_background">#FFFFFF</color>
     <color name="notification_color">#039D55</color>
 </resources>

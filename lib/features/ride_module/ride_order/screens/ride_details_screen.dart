@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:sixam_mart_delivery/features/ride_module/ride_order/controllers/ride_controller.dart';
 import 'package:sixam_mart_delivery/features/ride_module/ride_order/domain/models/trip_details_model.dart';
 
   

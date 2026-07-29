@@ -1,5 +1,5 @@
 class Images {
-  static const String logo = 'assets/image/deliveryboy.png';
+  static const String logo = 'assets/image/final_launcher_logo.png';
   static const String call = 'assets/image/call.png';
   static const String lock = 'assets/image/lock.png';
   static const String english = 'assets/image/english.png';
@@ -183,4 +183,14 @@ class Images {
   static const String noDeliveryRequest =
       'assets/image/no_delivery_request.png';
   static const String car = 'assets/image/car.png';
+  static const String dollerIcon = 'assets/image/doller_icon.png';
+  static const String walletIconSign = 'assets/image/wallet_icon_sign.png';
+  static const String noteIcon = 'assets/image/note-icon.png';
+  static const String totalIncome = 'assets/image/rider/total_income.png';
+  static const String rideIncome = 'assets/image/rider/ride_income.png';
+  static const String deliveryIncome = 'assets/image/rider/delivery_income.png';
+  static const String totalTips = 'assets/image/rider/total_tips.png';
+  static const String farePrice = 'assets/image/fare_price.png';
+  static const String discountAmount = 'assets/image/discount_amount.png';
+  static const String tipsSmallIcon = 'assets/image/rider/tips_small_icon.png';
 }

@@ -15,6 +15,8 @@ import 'package:sixam_mart_delivery/common/widgets/custom_snackbar_widget.dart';
 import 'package:sixam_mart_delivery/features/my_account/domain/models/withdraw_request_model.dart';
 import 'package:sixam_mart_delivery/features/my_account/domain/services/my_account_service_interface.dart';
 import 'package:sixam_mart_delivery/features/profile/controllers/profile_controller.dart';
+import 'package:sixam_mart_delivery/features/ride_module/trip/domain/models/trip_model.dart';
+import 'package:sixam_mart_delivery/features/my_account/domain/models/delivery_income_statement_model.dart';
 
 class MyAccountController extends GetxController implements GetxService {
   final MyAccountServiceInterface myAccountServiceInterface;
@@ -391,6 +393,50 @@ class MyAccountController extends GetxController implements GetxService {
       _withdrawRequestList!.addAll(withdrawRequestList);
     }
     update();
+  }
+
+  TripModel? _rideIncomeStatement;
+  TripModel? get rideIncomeStatement => _rideIncomeStatement;
+
+  DeliveryIncomeStatementModel? _deliveryIncomeStatementModel;
+  DeliveryIncomeStatementModel? get deliveryIncomeStatementModel => _deliveryIncomeStatementModel;
+
+  Future<void> getRideIncomeStatement(int offset) async {
+    if (offset == 1) {
+      _rideIncomeStatement = null;
+      update();
+    }
+    TripModel? tripModel = await myAccountServiceInterface.getRideIncomeStatement(offset);
+    if (tripModel != null) {
+      if (offset == 1) {
+        _rideIncomeStatement = tripModel;
+      } else {
+        _rideIncomeStatement!.totalSize = tripModel.totalSize;
+        _rideIncomeStatement!.offset = tripModel.offset;
+        _rideIncomeStatement!.limit = tripModel.limit;
+        _rideIncomeStatement!.tripList!.addAll(tripModel.tripList!);
+      }
+      update();
+    }
+  }
+
+  Future<void> getDeliveryIncomeStatement(int offset) async {
+    if (offset == 1) {
+      _deliveryIncomeStatementModel = null;
+      update();
+    }
+    DeliveryIncomeStatementModel? deliveryModel = await myAccountServiceInterface.getDeliveryIncomeStatement(offset);
+    if (deliveryModel != null) {
+      if (offset == 1) {
+        _deliveryIncomeStatementModel = deliveryModel;
+      } else {
+        _deliveryIncomeStatementModel!.totalSize = deliveryModel.totalSize;
+        _deliveryIncomeStatementModel!.offset = deliveryModel.offset;
+        _deliveryIncomeStatementModel!.limit = deliveryModel.limit;
+        _deliveryIncomeStatementModel!.transactions!.addAll(deliveryModel.transactions!);
+      }
+      update();
+    }
   }
 
 }
