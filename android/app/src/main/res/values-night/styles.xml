@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Theme applied to the Android Window while the process is starting
-         when the OS's Dark Mode setting is on.
-         Uses Theme.Light.NoTitleBar to keep the startup window white,
-         matching the Flutter splash background even in dark mode.
-
-         Android 12+ windowSplashScreen* attributes prevent the launcher
-         icon from appearing as the system splash on dark-mode devices.
-    -->
+    <!-- Theme applied when OS Dark Mode is ON.
+         Kept white (same as Flutter splash) so dark-mode devices also see a
+         seamless transition from native splash to Flutter splash. -->
     <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
-        <!-- Pre-Android 12 window background (plain white, no logo) -->
+        <!-- Pre-Android 12: white background + centered ic_launcher logo -->
         <item name="android:windowBackground">@drawable/launch_background</item>
 
-        <!-- Android 12+ System Splash Screen configuration for dark mode.
-             windowSplashScreenAnimatedIcon points to launch_background (white
-             drawable) — invisible on white background, preventing launcher icon. -->
+        <!-- Android 12+ splash — same icon as Flutter splash -->
         <item name="android:windowSplashScreenBackground">@android:color/white</item>
-        <item name="android:windowSplashScreenAnimatedIcon">@drawable/launch_background</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
         <item name="android:windowSplashScreenIconBackgroundColor">@android:color/white</item>
         <item name="android:windowSplashScreenAnimationDuration">0</item>
     </style>

@@ -23,6 +23,7 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterL
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // Firebase MUST initialize before runApp — required by Firebase SDK.
   if(GetPlatform.isAndroid) {
     await Firebase.initializeApp(
       options: const FirebaseOptions(
@@ -36,27 +37,28 @@ Future<void> main() async {
     await Firebase.initializeApp();
   }
 
+  // GetX dependency injection MUST run before runApp — controllers required immediately.
   Map<String, Map<String, String>> languages = await di.init();
 
-  NotificationBodyModel? body;
+  // Run the app immediately — Flutter splash screen renders at this point.
+  // Notification initialization is deferred to after first frame to avoid
+  // delaying the Flutter splash screen appearance.
+  runApp(MyApp(languages: languages));
+
+  // Initialize notifications AFTER runApp so Flutter splash paints first.
+  // This does not break notification routing — SplashScreen.initState()
+  // already calls _route() which handles notification body separately.
   try {
     if (GetPlatform.isMobile) {
-      final RemoteMessage? remoteMessage = await FirebaseMessaging.instance.getInitialMessage();
-      if(remoteMessage != null){
-        body = NotificationHelper.convertNotification(remoteMessage.data);
-      }
       await NotificationHelper.initialize(flutterLocalNotificationsPlugin);
       FirebaseMessaging.onBackgroundMessage(myBackgroundMessageHandler);
     }
-  }catch(_) {}
-
-  runApp(MyApp(languages: languages, body: body));
+  } catch(_) {}
 }
 
 class MyApp extends StatelessWidget {
   final Map<String, Map<String, String>>? languages;
-  final NotificationBodyModel? body;
-  const MyApp({super.key, required this.languages, this.body});
+  const MyApp({super.key, required this.languages});
 
   void _route() {
     Get.find<SplashController>().getConfigData().then((bool isSuccess) async {
@@ -94,7 +96,7 @@ class MyApp extends StatelessWidget {
             locale: localizeController.locale,
             translations: Messages(languages: languages),
             fallbackLocale: Locale(AppConstants.languages[0].languageCode!, AppConstants.languages[0].countryCode),
-            initialRoute: RouteHelper.getSplashRoute(body),
+            initialRoute: RouteHelper.getSplashRoute(null),
             getPages: RouteHelper.routes,
             defaultTransition: Transition.topLevel,
             transitionDuration: const Duration(milliseconds: 500),

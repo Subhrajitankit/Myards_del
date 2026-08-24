@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Modify this file to customize your launch splash screen -->
+<!-- Launch background that visually matches the Flutter SplashScreen.
+     Flutter splash shows: white background + dp_logo2.png (200px wide, centered).
+     @mipmap/ic_launcher was generated from dp_logo2.png via flutter_launcher_icons,
+     so centering it here makes the native launch window look identical to
+     the first Flutter frame — the user sees no visible transition. -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- White background — same as Flutter splash Scaffold background -->
     <item android:drawable="@android:color/white" />
 
-    <!-- You can insert your own image assets here -->
-    <!-- <item>
+    <!-- Centered app logo — same image as Images.logo (dp_logo2.png) -->
+    <item>
         <bitmap
             android:gravity="center"
-            android:src="@mipmap/launch_image" />
-    </item> -->
+            android:src="@mipmap/ic_launcher" />
+    </item>
 </layer-list>
