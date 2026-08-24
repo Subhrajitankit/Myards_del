@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Theme applied to the Android Window while the process is starting.
+         Uses Theme.Light.NoTitleBar so window background is white from the
+         first millisecond, matching the Flutter splash screen.
+
+         Android 12+ (API 31+) windowSplashScreen* attributes are added here
+         directly because compileSdk=36. Older Android versions safely ignore
+         unknown style attributes at runtime — no build error, no crash.
+
+         KEY FIX for Android 12+:
+         - windowSplashScreenBackground: white, same as Flutter splash
+         - windowSplashScreenAnimatedIcon: points to launch_background (an
+           existing white drawable). A white icon on a white background is
+           completely invisible — prevents the launcher icon from showing.
+         - windowSplashScreenIconBackgroundColor: white
+         - windowSplashScreenAnimationDuration: 0 (instant, no delay)
+         - postSplashScreenTheme: transitions to NormalTheme after system splash
+    -->
+    <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <!-- Pre-Android 12 window background (plain white, no logo) -->
+        <item name="android:windowBackground">@drawable/launch_background</item>
+
+        <!-- Android 12+ System Splash Screen configuration.
+             These attributes are only applied on API 31+ at runtime.
+             On older Android they are silently ignored. -->
+        <item name="android:windowSplashScreenBackground">@android:color/white</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/launch_background</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@android:color/white</item>
+        <item name="android:windowSplashScreenAnimationDuration">0</item>
+    </style>
+
+    <!-- Theme applied to the Android Window as soon as the process has started.
+         This theme determines the color of the Android Window while your
+         Flutter UI initializes, as well as behind your Flutter UI while its
+         running.
+
+         This Theme is only used starting with V2 of Flutter's Android embedding. -->
+    <style name="NormalTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+</resources>
